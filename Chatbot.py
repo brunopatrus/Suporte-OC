@@ -11,7 +11,10 @@ openai_api_key = get_openai_api_key()
 
 st.title("🔧 Chat GPT - Suporte OC")
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "Como posso ajudar?"}]
+    st.session_state["messages"] = [
+        {"role": "system", "content": "Você é um assistente de atendentes de suporte técnico automotivo. Responda as perguntas ajudando a resolver problemas e dúvidas técnicas."},
+        {"role": "assistant", "content": "Como posso ajudar?"}
+    ]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
